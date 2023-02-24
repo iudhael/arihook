@@ -35,10 +35,7 @@ TEMPLATES_DIR = os.path.join(BASE_DIR, 'templates')
 SECRET_KEY = 'django-insecure-q5-3ainnvrwb0d(=f3ytqr9foaypoc&1tdv06896vluh2xb1yt'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-if os.environ.get('ENV') == 'PRODUCTION':
-    DEBUG = False
-else:
-    DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['127.0.0.1']
 
@@ -79,7 +76,7 @@ MIDDLEWARE = [
     'django.middleware.locale.LocaleMiddleware',
 
     #pour envoyer le site
-    "whitenoise.middleware.WhiteNoiseMiddleware",
+
 
     'authentification.middleware.RememberMeMiddleware', #se souvenir de moi
 
@@ -89,8 +86,6 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = 'arihook.urls'
-#pour envoyer le site
-STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
 
 TEMPLATES = [
     {
@@ -114,21 +109,17 @@ WSGI_APPLICATION = 'arihook.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
-#DATABASES = {
-#    'default': {
-#        'ENGINE': 'django.db.backends.postgresql',
-#        'NAME': 'arihook_db',
-#	    'USER': 'postgres',
-#	    'PASSWORD': DB_PASS,
-#	    'HOST': '127.0.0.1',
-#	    'PORT': '5432',
-#   }
-#}
-
-#pour envoyer le site
 DATABASES = {
-    'default': dj_database_url.config()
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'arihook_db',
+	    'USER': 'postgres',
+	    'PASSWORD': DB_PASS,
+	    'HOST': '127.0.0.1',
+	    'PORT': '5432',
+    }
 }
+
 
 # Password validation
 # https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators
@@ -154,7 +145,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'fr'
 
-TIME_ZONE = 'UTC+1'
+TIME_ZONE = 'UTC'
 
 USE_I18N = True
 
@@ -168,8 +159,6 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-# pour envoyer le site
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, "static")
@@ -206,7 +195,5 @@ SESSION_TIMEOUT_REDIRECT = 'authentification:login'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 INTERNAL_IPS = ['127.0.0.1']
-
-django_heroku.settings(locals())
 
 

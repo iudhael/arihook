@@ -35,7 +35,10 @@ TEMPLATES_DIR = os.path.join(BASE_DIR, 'templates')
 SECRET_KEY = 'django-insecure-q5-3ainnvrwb0d(=f3ytqr9foaypoc&1tdv06896vluh2xb1yt'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+if os.environ.get('ENV') == 'PRODUCTION':
+    DEBUG = False
+else:
+    DEBUG = True
 
 ALLOWED_HOSTS = ['127.0.0.1']
 
@@ -86,6 +89,7 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = 'arihook.urls'
+#pour envoyer le site
 STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
 
 TEMPLATES = [
@@ -121,6 +125,7 @@ WSGI_APPLICATION = 'arihook.wsgi.application'
 #   }
 #}
 
+#pour envoyer le site
 DATABASES = {
     'default': dj_database_url.config()
 }
@@ -149,7 +154,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'fr'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'UTC+1'
 
 USE_I18N = True
 
@@ -163,6 +168,7 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
+# pour envoyer le site
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 STATICFILES_DIRS = [
@@ -200,6 +206,7 @@ SESSION_TIMEOUT_REDIRECT = 'authentification:login'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 INTERNAL_IPS = ['127.0.0.1']
+
 django_heroku.settings(locals())
 
 

@@ -1,0 +1,62 @@
+
+{% extends 'base.html' %}
+
+{% load crispy_forms_tags %}
+
+{% block content %}
+
+<div class="content-section container shadow p-2 mt-5" id="profile">
+        
+    <div class="media">
+
+
+        <div class="media-body container m-auto text-center ">
+            <p class="account-heading">{{ user.username }}</p>
+            <p class="text-secondary  test">{{ user.first_name }} {{ user.last_name }}</p>
+            <p class="text-secondary">{{ user.email }}</p>
+
+        </div>
+
+    </div>
+
+<div class="mask mb-5 mt-5 d-flex align-items-centerbg-dark h-100 gradient-custom-3">
+    <div class="container h-100">
+        <div class="row d-flex justify-content-center align-items-center h-100">
+            <div class="col-12 col-md-9 col-lg-7 col-xl-6">
+                <div class="card " style="border-radius: 15px;">
+                    <div class="card-body p-5">
+                        <form method="POST" enctype="multipart/form-data">
+                            {% csrf_token %}
+                            <fieldset class="form_group">
+                                <legend class="border-bottom mb-4">Profil Info</legend>
+                                    <div class="row">
+                                        <div class="col-12">
+                                            {{ user_form.username|as_crispy_field }}
+
+                                        </div>
+                                        <div class="col-12">
+                                            {{ user_form.email|as_crispy_field }}
+
+                                        </div>
+
+                                    </div>
+                            </fieldset>
+                            <div class="form-group">
+                                <button class="btn  btn-success" type="submit">Update</button>
+
+                            </div>
+
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+</div>
+
+
+
+
+{% endblock %}

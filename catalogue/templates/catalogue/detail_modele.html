@@ -1,0 +1,88 @@
+{%extends 'base.html'%}
+
+
+{% block title %}
+    {% if modele_name.nom_modele == '' %}
+            {{ modele_name.categorie }}
+
+    {% else %}
+
+            {{ modele_name.nom_modele }}
+    {% endif %}
+{% endblock %}
+
+
+{% load social_share %}
+{% block content %}
+
+
+    <div class="bg-dark p-3 mb-5 partage_icon fixed-bottom" >
+        <i class="fa-sharp fa-solid fa-share-nodes h2 text-white "  title="Share with me !!!" data-bs-toggle="modal" data-bs-target="#share"></i>
+    </div >
+
+    <div class="row row-cols-1 row-cols-md-3 g-4 m-2" >
+        {% for modele in modeles %}
+            
+                <a href="{{ modele.img_detail.url }}">
+                    <div class="col ">
+                        <div class="card h-100 bg-dark">
+                            <img src="{{ modele.img_detail.url }}" class="card-img-top" alt="{{ modele.nom_modele }}" height="350px">
+                            <div class="card-body">
+                                <h5 class="card-title">{{ modele.nom_modele }}</h5>
+                            </div>
+                        </div>
+                    
+                    </div>
+                </a>
+
+                
+        {% endfor %}
+    </div>
+
+
+
+
+
+        <div class="modal fade" id="share" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="share" aria-hidden="true">
+            <div class="modal-dialog modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Share</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+
+                        </button>
+                    </div>
+                    <div class="modal-body bg-dark d-flex justify-content-around">
+                        <div>
+                            {% post_to_whatsapp object_or_url "<i class='fa-brands fa-whatsapp h2 text-white'></i>" %}
+                        </div>
+
+                        <div>
+                            {% post_to_facebook object_or_url "<i class='fa-brands fa-facebook-f h2 text-white'></i>" %}
+                        </div>
+
+                        <div>
+                            {% post_to_twitter "New arihook model !!! Check it out!" object_or_url "<i class='fa-brands fa-twitter h2 text-white'></i>" %}
+
+                        </div>
+
+                        <div>
+                            {% post_to_linkedin  object_or_url  %}
+                        </div>
+
+                        <div >
+                            {% post_to_telegram "New arihook model !! Check it out!" object_or_url "<i class='fa-brands fa-telegram h2 text-white'></i>" %}
+                        </div>
+
+                        <div>
+                            {% send_email object.title  "My favorite model. Check it out!" object_or_url "<i class='fa-solid fa-envelope h2 text-white'></i>" %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+
+{% endblock %} 

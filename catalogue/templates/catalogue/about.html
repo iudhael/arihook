@@ -1,0 +1,49 @@
+{%extends 'base.html'%}
+{% load static %}
+{% block title %}
+    About
+{% endblock %}
+
+
+{% block content %}
+
+
+<div class="container h-100">
+    <div class="row d-flex justify-content-center align-items-center h-100 ">
+        <div class="col-12 col-md-10 col-lg-9 col-xl-8">
+            <div class="card bg-light" style="border-radius: 15px;">
+                <div class="d-flex bg-dark pt-4 pb-4 justify-content-center" style="border-radius: 15px 15px 0px 0px;" >
+                    <img src="{% static '/img/logo.png' %}" alt="logo"  class="w-50"/>
+                </div>
+
+                <div class="card-body  p-5 " >
+
+                    <h3 class="text-center">Qu'est ce que AriHook ?</h3>
+                    <p class="fw-bolder" style="font-size: 1.2em; text-align: justify;">
+                            AriHook, est une entreprise naissante qui excelle dans l'art du tricotage à la main de tout type de tenues et accessoires destinés à n'importe quel profil de personne.
+
+                    </p>
+
+
+
+
+                    <div class="d-flex mt-4 justify-content-end">
+                        <h6 class="text-justify">
+                            Merci !
+                        </h6>
+
+                    </div>
+
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+{% endblock %}

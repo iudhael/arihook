@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Favoris
+{% endblock %}
+
+
+{% block content %}
+
+    <div class="py-5" id="favoris">
+        <div class="row row-cols-2 row-cols-md-3 g-4 m-2">
+            {% for modele_categorie in new %}
+                    <div class="col">
+                        <div class="card m  bg-dark">
+                            <a href="{% url 'catalogue:detail_modele' detail_modele_id=modele_categorie.id %}">
+                                <img src="{{ modele_categorie.image.url }}" class="card-img-top" alt="{{ modele_categorie.nom_modele }}" height="400px">
+                                <div class="card-body">
+                                    <h5 class="card-title">{{ modele_categorie.nom_modele }}</h5>
+                                </div>
+                            </a>
+                            <div class="card-footer">
+                                <div class="d-flex justify-content-between">
+                                    <a href="{% url 'catalogue:favourite_add' modele_categorie.id %}">
+                                        
+                                        <i class="fa-solid fa-trash-can h3 text-white"></i>
+
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+            
+            {% endfor %}
+
+        </div>
+        
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+{% endblock %}

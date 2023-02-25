@@ -12,8 +12,8 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 
 from pathlib import Path
 import os
-import django_heroku
-import dj_database_url
+#import django_heroku
+#import dj_database_url
 
 import authentification.middleware
 from . info import *
@@ -31,11 +31,16 @@ TEMPLATES_DIR = os.path.join(BASE_DIR, 'templates')
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
 
-# SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-q5-3ainnvrwb0d(=f3ytqr9foaypoc&1tdv06896vluh2xb1yt'
+if os.environ.get('ENV') == 'PRODUCTION':
+    # SECURITY WARNING: keep the secret key used in production secret!
+    SECRET_KEY = os.environ.get('SECRET_KEY_PROD')
 
-# SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+    # SECURITY WARNING: don't run with debug turned on in production!
+    DEBUG = False
+else:
+    # SECURITY WARNING: keep the secret key used in production secret!
+    SECRET_KEY = 'django-insecure-q5-3ainnvrwb0d(=f3ytqr9foaypoc&1tdv06896vluh2xb1yt'
+    DEBUG = True
 
 ALLOWED_HOSTS = ['127.0.0.1']
 

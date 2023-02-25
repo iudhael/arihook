@@ -20,7 +20,7 @@ from django.conf import settings
 from django.conf.urls.static import static
 from django.conf.urls import include
 from django.contrib.auth import views as auth_views
-from authentification import views
+from catalogue import views
 from django.contrib.sitemaps.views import sitemap
 
 
@@ -28,7 +28,7 @@ from arihook.sitemaps import *
 
 sitemaps = {
     'modeles': ModeleSitemap,
-    'image_detail' : Image_detailSitemap,
+    'image_detail': Image_detailSitemap,
 
 }
 

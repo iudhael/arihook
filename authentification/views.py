@@ -6,7 +6,7 @@ from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
 from django.core.mail import send_mail, EmailMessage
-from nltk.inference.tableau import Categories
+from catalogue.models import Categories
 
 from arihook import settings
 from django.contrib.sites.shortcuts import get_current_site

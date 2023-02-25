@@ -1,7 +1,7 @@
 from random import randint
 
-from django.contrib.auth.decorators import user_is_superuser_admin
-from django.contrib.auth.models import User
+#from django.contrib.auth.decorators import user_is_superuser_admin
+#from django.contrib.auth.models import User
 from django.contrib.sites.shortcuts import get_current_site
 from django.shortcuts import render, redirect
 from django.template.loader import render_to_string
@@ -13,7 +13,8 @@ from . models import Subscribers, MailMessage
 from django.contrib import messages
 from django.core.mail import send_mail, EmailMessage
 
-from datetime import date
+
+#from datetime import date
 
 #from django_pandas.io import read_frame
 
@@ -39,8 +40,14 @@ def subscribepage(request):
     return render(request, 'newsletter/subscribe.html', context)
 
 
+def user_is_superuser_admin(function):
+    def wrap(request, *args, **kwargs):
+        if not request.user.is_superuser:
+            return redirect('authentification:login')
+        return function(request, *args, **kwargs)
+    return wrap
 
-@user_is_superuser_admin(login_url='authentification:login')
+@user_is_superuser_admin
 def mail_letter(request):
     #today_date = date.today()
     subscriber = list(Subscribers.objects.all())

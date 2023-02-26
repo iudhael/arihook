@@ -31,7 +31,7 @@ def subscribepage(request):
         if form_newsletter.is_valid():
             form_newsletter.save()
             messages.success(request, 'Subscription Successful')
-            return redirect('newsletter:subscribe-letter')
+            return redirect('catalogue:home')
     else:
         form_newsletter = SubscibersForm()
     context = {

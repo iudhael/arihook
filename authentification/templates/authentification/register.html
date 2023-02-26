@@ -61,13 +61,13 @@
                             <div class="text-white mt-4 mb-2 ">
                                 Vous avez  un compte ! <a class="btn btn-primary" href="{% url 'authentification:login' %}#login">Login</a>
                             </div>
-                            {% if  not email_envoyer %}
+                            <!--{% if  not email_envoyer %}-->
                                 <div class="mt-4 mb-2">
                                     <a href="{% url 'authentification:resend-confirmation-email' %}">
                                         <button class="btn  btn-warning">Resend email</button>
                                     </a>
                                 </div>
-                            {% endif %}
+                            <!--{% endif %}-->
                         </div>
                     </div>
 

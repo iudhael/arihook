@@ -142,7 +142,7 @@ def registerpage(request):
                 #prenom = form.cleaned_data.get('first_name')
 
                 #send_email(nom, prenom, username, email_user, request, user)
-                email_envoyer =True
+
                 send_email(username, email_user, request, user)
 
 
@@ -164,6 +164,8 @@ def registerpage(request):
                     return render(request, 'authentification/register.html', context)
 
                 """
+                """
+                email_envoyer =True
                 context = {
                     'form': form,
                     'email_envoyer': email_envoyer,
@@ -171,6 +173,8 @@ def registerpage(request):
                 }
 
                 return render(request, 'authentification/register.html', context)
+                """
+                return redirect('catalogue:home')
 
     context = {
         'form':form,

@@ -40,7 +40,7 @@ urlpatterns = [
     re_path('', include('authentification.urls', namespace='authentification')),
     re_path('', include('newsletter.urls', namespace='newsletter')),
     re_path(r'^$', views.main, name="home"),
-    path('arihookadmin_panel_site/', admin.site.urls),
+    path('arihookadmine/', admin.site.urls),
 
 
             # reinitialisation du mot de pass
